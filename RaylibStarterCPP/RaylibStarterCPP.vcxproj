@@ -184,6 +184,7 @@
     <ClInclude Include="AABB.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SphereCollision.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
