@@ -30,6 +30,8 @@
 #include "Sphere.h"
 #include "Transform.h"
 #include <string>
+#include "AABB.h"
+
 
 #pragma warning(pop)
 
@@ -48,7 +50,14 @@ int main(int argc, char* argv[])
 
     GameObject* sceneRoot = new GameObject(new MyTransform(glm::vec3(screenWidth / 2, screenHeight / 2, 0)));
     GameObject* gameObject1 = new Sphere(new MyTransform(glm::vec3(0, 0,0), 0.785, glm::vec3{1,2,1}), sceneRoot, 50, BLUE);
-    
+
+    glm::vec3 boxMin = { 100,100,0 };
+    glm::vec3 boxMax = { 200,200,0 };
+    AABB box = {boxMin, boxMax};
+
+    glm::vec3 boxMin2 = {150,150,0 };
+    glm::vec3 boxMax2 = { 500,500,0 };
+    AABB box2 = { boxMin2, boxMax2 };
    
     
     // Main game loop
@@ -66,10 +75,24 @@ int main(int argc, char* argv[])
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
-
         ClearBackground(RAYWHITE);
 
         sceneRoot->Draw();
+
+        //DrawRectangleV({ box2.Center().x, box2.Center().y }, { box2.Extents().x, box2.Extents().y }, YELLOW);
+        DrawRectangle(box2.min.x, box2.min.y, box2.Extents().x * 2, box2.Extents().y * 2, YELLOW);
+        if (box.Overlaps(box2))
+        {
+            //DrawRectangleV({ box.Center().x, box.Center().y}, {box.Extents().x, box.Extents().y}, RED);
+            DrawRectangle(box.min.x, box.min.y, box.Extents().x * 2, box.Extents().y * 2, RED);
+        }
+        else
+        {
+            //DrawRectangleV({ box.Center().x, box.Center().y }, { box.Extents().x, box.Extents().y }, BLACK);
+            DrawRectangle(box.min.x, box.min.y, box.Extents().x * 2, box.Extents().y * 2, BLACK);
+        }
+
+
         DrawText(std::to_string(fps).c_str(), 0, 0, 32, BLACK);
         EndDrawing();
         //----------------------------------------------------------------------------------
