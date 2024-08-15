@@ -183,6 +183,8 @@
   <ItemGroup>
     <ClInclude Include="AABB.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Ray.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="SphereCollision.h" />
     <ClInclude Include="Transform.h" />
