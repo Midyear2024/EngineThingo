@@ -13,15 +13,8 @@ Sphere::Sphere(MyTransform* transform, GameObject* parent, float radius, Color c
 void Sphere::Update(float dt)
 {
 	
-	transform->SetPosition(transform->GetLocalPosition() + (MyTransform::WORLD_RIGHT * 100.f * dt));
-	
-	
-	
-	transform->Rotate(0.785 * dt);
-	c++;
-	
-	
-	transform->Scale(glm::vec3(glm::cos( c * dt), glm::cos( c * dt), glm::cos(c * dt)));
+	//transform->Translate(glm::vec3{0 , 50 ,0 } * dt);
+	transform->Rotate(0.5 * dt);
 
 
 	GameObject::Update(dt);
@@ -36,10 +29,10 @@ void Sphere::Draw()
 	
 	DrawCircle(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], radius * glm::length(transform->GetWorldScale()), color);
 
-	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldForward()[0] * 50, transform->GetWorldPosition()[1] + transform->GetWorldForward()[1] * 50, GREEN);
-	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldRight()[0] * 50, transform->GetWorldPosition()[1] + transform->GetWorldRight()[1] * 50, RED);
+	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldForward()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldForward()[1] * length, GREEN);
+	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldRight()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldRight()[1] * length, RED);
 
-	
+
 
 	GameObject::Draw();
 }

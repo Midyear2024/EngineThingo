@@ -43,8 +43,6 @@ MyTransform::MyTransform(glm::vec3 pos, float angle, glm::vec3 scale)
 
     CalculateWorldTransform();
     dirty = false;
-
-
 }
 
 glm::vec3 MyTransform::GetLocalPosition() const
