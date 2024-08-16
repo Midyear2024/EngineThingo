@@ -5,9 +5,11 @@ void MyTransform::CalculateWorldTransform()
 {
     if (parentObject) {
         worldTransform = parentObject->GetWorldTransform() * localTransform;
+        worldScale = parentObject->GetWorldScale() + localScale;
     }
     else {
         worldTransform = localTransform;
+        worldScale = localScale;
     }
 }
 
@@ -34,6 +36,7 @@ MyTransform::MyTransform(glm::vec3 pos, float angle) : MyTransform(pos, angle, g
 MyTransform::MyTransform(glm::vec3 pos, float angle, glm::vec3 scale)
 {
     localTransform = glm::mat4(1.0f);
+    
     Translate(pos);
     Rotate(angle);
     Scale(scale);
@@ -51,13 +54,13 @@ glm::vec3 MyTransform::GetLocalPosition() const
 
 glm::vec3 MyTransform::GetLocalForward() const
 {
-    return glm::normalize(glm::vec3(localTransform[1][0], localTransform[1][1], localTransform[1][2]));
+    return glm::vec3(localTransform[1][0], localTransform[1][1], localTransform[1][2]);
 }
 
 
 glm::vec3 MyTransform::GetLocalRight() const
 {
-   return glm::normalize(glm::vec3(localTransform[0][0], localTransform[0][1], 0));
+   return glm::vec3(localTransform[0][0], localTransform[0][1], 0);
 }
 
 glm::vec3 MyTransform::GetWorldPosition()
@@ -75,7 +78,7 @@ glm::vec3 MyTransform::GetWorldRight()
         CalculateWorldTransform();
         dirty = false;
     }
-    return glm::normalize(glm::vec3(worldTransform[0][0], worldTransform[0][1], 0));
+    return glm::vec3(worldTransform[0][0], worldTransform[0][1], 0);
 }
 
 glm::vec3 MyTransform::GetWorldForward() 
@@ -84,7 +87,7 @@ glm::vec3 MyTransform::GetWorldForward()
         CalculateWorldTransform();
         dirty = false;
     }
-    return glm::normalize(glm::vec3(worldTransform[1][0], worldTransform[1][1], worldTransform[1][2]));
+    return glm::vec3(worldTransform[1][0], worldTransform[1][1], worldTransform[1][2]);
 }
 
 
@@ -104,7 +107,7 @@ glm::mat4 MyTransform::GetLocalTransform() const
 
 float MyTransform::GetLocalScaleX() const
 {
-    return glm::sqrt(localTransform[0][0] * localTransform[0][0] + localTransform[0][1] * localTransform[0][1] + localTransform[0][2] * localTransform[0][2]);
+    return localScale.x;
 }
 
 float MyTransform::GetWorldScaleX()
@@ -113,12 +116,12 @@ float MyTransform::GetWorldScaleX()
         CalculateWorldTransform();
         dirty = false;
     }
-    return glm::sqrt(worldTransform[0][0] * worldTransform[0][0] + worldTransform[0][1] * worldTransform[0][1] + worldTransform[0][2] * worldTransform[0][2]);
+    return worldScale.x;
 }
 
 float MyTransform::GetLocalScaleY() const
 {
-   return glm::sqrt(localTransform[1][0] * localTransform[1][0] + localTransform[1][1] * localTransform[1][1] + localTransform[1][2] * localTransform[1][2]);
+    return localScale.y;
 }
 
 float MyTransform::GetWorldScaleY()
@@ -127,12 +130,12 @@ float MyTransform::GetWorldScaleY()
         CalculateWorldTransform();
         dirty = false;
     }
-    return glm::sqrt(worldTransform[1][0] * worldTransform[1][0] + worldTransform[1][1] * worldTransform[1][1] + worldTransform[1][2] * worldTransform[1][2]);
+    return worldScale.y;
 }
 
 float MyTransform::GetLocalScaleZ() const
 {
-    return glm::sqrt(localTransform[2][0] * localTransform[2][0] + localTransform[2][1] * localTransform[2][1] + localTransform[2][2] * localTransform[2][2]);
+    return localScale.z;
 }
 
 float MyTransform::GetWorldScaleZ()
@@ -141,19 +144,19 @@ float MyTransform::GetWorldScaleZ()
         CalculateWorldTransform();
         dirty = false;
     }
-    return glm::sqrt(worldTransform[2][0] * worldTransform[2][0] + worldTransform[2][1] * worldTransform[2][1] + worldTransform[2][2] * worldTransform[2][2]);
+    return worldScale.z;
 }
 
 glm::vec3 MyTransform::GetWorldScale()
 {
     
-    return glm::vec3{ GetWorldScaleX(), GetWorldScaleY(), GetWorldScaleZ() };
+    return worldScale;
     
 }
 
 glm::vec3 MyTransform::GetLocalScale() const
 {
-    return glm::vec3{ GetLocalScaleX(), GetLocalScaleY(), GetLocalScaleZ() };
+    return localScale;
 }
 
 void MyTransform::AddParent(MyTransform* parent)
@@ -166,6 +169,7 @@ void MyTransform::AddParent(MyTransform* parent)
 
 void MyTransform::Translate(glm::vec3 translateVector)
 {
+    auto temp = glm::translate(localTransform, translateVector);
     localTransform = glm::translate(localTransform, translateVector);
     dirty = true;
     
@@ -179,8 +183,19 @@ void MyTransform::Rotate(float radians, glm::vec3 axis)
 
 void MyTransform::Scale(glm::vec3 scale)
 {
-    localTransform  = glm::scale(localTransform, scale);
+    localScale = scale;
     dirty = true;
 }
+
+void MyTransform::SetPosition(glm::vec3 newPosition)
+{
+
+    localTransform[3][0] = newPosition.x;
+    localTransform[3][1] = newPosition.y;
+    localTransform[3][2] = newPosition.z;
+    dirty = true;
+}
+
+
 
 

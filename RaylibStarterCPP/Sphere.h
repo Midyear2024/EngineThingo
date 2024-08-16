@@ -17,7 +17,7 @@ public:
 protected:
     float radius;
     Color color;
-
+    char c = 0;
 
 
 };

@@ -47,7 +47,9 @@ int main(int argc, char* argv[])
     
 
     GameObject* sceneRoot = new GameObject(new MyTransform(glm::vec3(screenWidth / 2, screenHeight / 2, 0)));
-    GameObject* gameObject1 = new Sphere(new MyTransform(glm::vec3(0, 0,0), 0.785, glm::vec3{1,2,1}), sceneRoot, 50, BLUE);
+    GameObject* gameObject1 = new Sphere(new MyTransform(glm::vec3(0, 0,0), 0.785, glm::vec3{2,2,2}), sceneRoot, 50, BLUE);
+    /*GameObject* gameObject2 = new Sphere(new MyTransform(glm::vec3(0, 20, 0), 0.785, glm::vec3{ 0.5,0.5,0.5 }), gameObject1, 25, RED);
+    GameObject* gameObject3 = new Sphere(new MyTransform(glm::vec3(0, 20, 0), 0.785, glm::vec3{ 0.5,0.5,0.5 }), gameObject2, 10, GREEN);*/
     
    
     
