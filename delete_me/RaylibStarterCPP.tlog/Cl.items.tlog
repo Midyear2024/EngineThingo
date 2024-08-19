@@ -1,4 +1,17 @@
-C:\Jobs\Repos\EngineThingo\RaylibStarterCPP\GameObject.cpp;C:\Jobs\Repos\EngineThingo\delete_me\GameObject.obj
-C:\Jobs\Repos\EngineThingo\RaylibStarterCPP\main.cpp;C:\Jobs\Repos\EngineThingo\delete_me\main.obj
-C:\Jobs\Repos\EngineThingo\RaylibStarterCPP\Sphere.cpp;C:\Jobs\Repos\EngineThingo\delete_me\Sphere.obj
-C:\Jobs\Repos\EngineThingo\RaylibStarterCPP\Transform.cpp;C:\Jobs\Repos\EngineThingo\delete_me\Transform.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\GameManager.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\GameManager.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\GameObject.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\GameObject.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\main.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\main.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\MovementComponent.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\MovementComponent.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\PlayerTank.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\PlayerTank.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\ProjectileMovement.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\ProjectileMovement.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\RectRenderer.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\RectRenderer.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\RotationComponent.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\RotationComponent.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\Scene.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\Scene.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\Shell.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\Shell.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\Sphere.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\Sphere.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\SpriteRenderer.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\SpriteRenderer.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\TankGameScene.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\TankGameScene.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\TankMovement.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\TankMovement.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\TankRotation.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\TankRotation.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\Transform.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\Transform.obj
+G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\RaylibStarterCPP\TurretRotation.cpp;G:\AIE\2024\Midyear\Class Examples\RaylibStarterCpp\delete_me\TurretRotation.obj

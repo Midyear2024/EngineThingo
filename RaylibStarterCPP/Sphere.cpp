@@ -25,10 +25,8 @@ void Sphere::Draw()
 
 
 	
-	
-	
 	DrawCircle(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], radius * glm::length(transform->GetWorldScale()), color);
-
+	const float length = 500;
 	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldForward()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldForward()[1] * length, GREEN);
 	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldRight()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldRight()[1] * length, RED);
 

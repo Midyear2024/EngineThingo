@@ -8,7 +8,6 @@ private:
 	glm::vec3 localScale;
 	glm::vec3 worldScale;
 
-	bool dirty;
 
 	MyTransform* parentObject;
 
@@ -28,11 +27,16 @@ public:
 	MyTransform(glm::vec3 pos, float angle, glm::vec3 scale);
 
 	glm::vec3 GetLocalPosition() const;
+	glm::vec3 GetWorldPosition();
+	
 	glm::vec3 GetLocalRight() const;
 	glm::vec3 GetLocalForward() const;
-	glm::vec3 GetWorldPosition();
+	glm::vec3 GetLocalUp() const;
+	
 	glm::vec3 GetWorldRight();
 	glm::vec3 GetWorldForward();
+	glm::vec3 GetWorldUp();
+	
 	glm::mat4 GetWorldTransform();
 	glm::mat4 GetLocalTransform() const;
 

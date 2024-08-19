@@ -1,6 +1,6 @@
 #include "Transform.h"
 #include "GameObject.h"
-
+#include "Component.h"
 
 
 
@@ -30,10 +30,22 @@ GameObject::GameObject(MyTransform* transform, GameObject* parent) : transform{t
 GameObject::~GameObject()
 {
 	delete transform;
+
+	for (int i = 0; i < components.size(); ++i) {
+		delete components[i];
+	}
+	components.clear();
 }
 
 void GameObject::Draw()
 {
+
+	//Draw attached components
+	if (!components.empty()) {
+		for (auto it = components.begin(); it != components.end(); ++it) {
+			(*it)->Draw();
+		}
+	}
 
 	//Than Draw our children
 	if (children.empty()) return;
@@ -45,9 +57,15 @@ void GameObject::Draw()
 
 void GameObject::Update(float dt)
 {
+	if (!components.empty()) {
+		for (auto it = components.begin(); it != components.end(); ++it) {
+			(*it)->Update(dt);
+		}
+	}
+
 	if (children.empty()) return;
-	for (auto it = children.begin(); it != children.end(); ++it) {
-		(*it)->Update(dt);
+	for (int i = 0; i < children.size(); ++i) {
+		children[i]->Update(dt);
 	}
 }
 
@@ -62,8 +80,21 @@ void GameObject::AddChild(GameObject* child)
 	child->AddParent(this);
 }
 
+void GameObject::AddComponent(Component* toAdd)
+{
+	toAdd->AddGameObjectReference(*this);
+	components.push_back(toAdd);
+}
+
+
+
 void GameObject::AddParent(GameObject* parent)
 {
 	this->parent = parent;
 	transform->AddParent(parent->transform);
+}
+
+std::vector<GameObject*> GameObject::GetChildren()
+{
+	return children;
 }

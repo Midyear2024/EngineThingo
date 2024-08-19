@@ -4,7 +4,7 @@
 #include <raylib.h>
 
 class MyTransform;
-
+class Component;
 class GameObject {
 
 
@@ -14,9 +14,8 @@ protected:
 
 	GameObject* parent;
 	std::vector<GameObject*> children;
-
+	std::vector<Component*> components;
 	
-	void AddParent(GameObject* parent);
 	
 
 public:
@@ -35,6 +34,12 @@ public:
 	MyTransform* GetTransform();
 	void AddChild(GameObject* child);
 
+	void AddComponent(Component* toAdd);
 
+	void AddParent(GameObject* parent);
+
+	bool HasChildren() { return children.size() > 0; }
+
+	std::vector<GameObject*> GetChildren();
 
 };

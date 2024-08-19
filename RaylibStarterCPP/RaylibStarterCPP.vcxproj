@@ -172,22 +172,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="PlayerTank.cpp" />
+    <ClCompile Include="ProjectileMovement.cpp" />
+    <ClCompile Include="RectRenderer.cpp" />
+    <ClCompile Include="RotationComponent.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Shell.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="TankGameScene.cpp" />
+    <ClCompile Include="TankMovement.cpp" />
+    <ClCompile Include="TankRotation.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="TurretRotation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="PlayerTank.h" />
+    <ClInclude Include="ProjectileMovement.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="RectRenderer.h" />
+    <ClInclude Include="RotationComponent.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Shell.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="SphereCollision.h" />
+    <ClInclude Include="SpriteRenderer.h" />
+    <ClInclude Include="TankGameScene.h" />
+    <ClInclude Include="TankMovement.h" />
+    <ClInclude Include="TankRotation.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="TurretRotation.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
