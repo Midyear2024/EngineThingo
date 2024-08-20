@@ -16,6 +16,7 @@ protected:
 	std::vector<GameObject*> children;
 	std::vector<Component*> components;
 	
+	bool beingDestroyed = false;
 	
 
 public:
@@ -25,7 +26,7 @@ public:
 	GameObject(MyTransform* transform, GameObject* parent);
 
 
-	~GameObject();
+	virtual ~GameObject();
 
 
 	virtual void Draw();
@@ -33,6 +34,7 @@ public:
 
 	MyTransform* GetTransform();
 	void AddChild(GameObject* child);
+	void RemoveChild(GameObject* child);
 
 	void AddComponent(Component* toAdd);
 
@@ -41,5 +43,7 @@ public:
 	bool HasChildren() { return children.size() > 0; }
 
 	std::vector<GameObject*> GetChildren();
+
+	virtual void OnDestroy();
 
 };

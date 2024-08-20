@@ -16,6 +16,7 @@ public:
 
 
 	void AddGameObjectToScene(GameObject* objectToAdd, bool parentToSceneRoot = true);
+	void RemoveGameObjectFromScene(GameObject* objectToRemove);
 
 	virtual void Update(float dt);
 	virtual void Draw();

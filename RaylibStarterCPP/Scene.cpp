@@ -33,17 +33,29 @@ void Scene::AddGameObjectToScene(GameObject* objectToAdd, bool parentToSceneRoot
 
 }
 
+void Scene::RemoveGameObjectFromScene(GameObject* objectToRemove)
+{
+	auto it = std::find(allObjectsInScene.begin(), allObjectsInScene.end(), objectToRemove);
+	allObjectsInScene.erase(it);
+	objectToRemove->OnDestroy();
+}
+
 void Scene::Update(float dt)
 {
 	if(sceneRoot != nullptr)
-		sceneRoot->Update(dt);
+		for (int i = 0; i < allObjectsInScene.size(); ++i) {
+			allObjectsInScene[i]->Update(dt);
+		}
 }
 
 void Scene::Draw()
 {
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
-	if (sceneRoot != nullptr)
-		sceneRoot->Draw();
+	//if (sceneRoot != nullptr)
+	//	sceneRoot->Draw();
+	for (int i = 0; i < allObjectsInScene.size(); ++i) {
+		allObjectsInScene[i]->Draw();
+	}
 	EndDrawing();
 }

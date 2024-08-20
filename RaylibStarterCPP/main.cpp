@@ -50,6 +50,7 @@ int main(int argc, char* argv[])
 
     Scene* mainScene = new TankGameScene(1200, 450);
     GameManager::GetGameManager().AddSceneToManager(mainScene);
+    
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -64,7 +65,7 @@ int main(int argc, char* argv[])
         
         
    
-      
+        GameManager::GetGameManager().HandleGarbageCollectionTick(frameTime);
         //----------------------------------------------------------------------------------
     }
    // delete sceneRoot;

@@ -5,7 +5,7 @@ void MyTransform::CalculateWorldTransform()
 {
     if (parentObject) {
         worldTransform = parentObject->GetWorldTransform() * localTransform;
-        worldScale = parentObject->GetWorldScale() + localScale;
+        worldScale = localScale;
     }
     else {
         worldTransform = localTransform;
