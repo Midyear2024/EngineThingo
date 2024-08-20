@@ -1,10 +1,10 @@
 #include "Shell.h"
-#include "SpriteRenderer.h"
+#include "AnimatedSpriteRenderer.h"
 #include "ProjectileMovement.h"
 #include "GameManager.h"
 Shell::Shell(MyTransform* transform, GameObject* parent, float intialSpeed, float intialRotation) : GameObject(transform, parent)
 {
-	new SpriteRenderer(*this, "Resources/Sprites/Bullet.png", { 1,1,1 }, { 0.5f, 0.5f,0.5f }, 0);
+	new AnimatedSpriteRenderer(*this, "Resources/Sprites/explosion.png", { 1,1,1 }, { 0.5f, 0.5f,0.5f }, 0, 5, 5);
 	new ProjectileMovement(*this, 500.0f);
 
 }

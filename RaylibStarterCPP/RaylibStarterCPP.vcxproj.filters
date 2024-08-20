@@ -90,6 +90,9 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AnimatedSpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="Shell.h">
       <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedSpriteRenderer.h">
+      <Filter>Header Files\Components\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
