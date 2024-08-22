@@ -48,8 +48,8 @@ int main(int argc, char* argv[])
 
     SetTargetFPS(120);
 
-    Scene* mainScene = new TankGameScene(1200, 450);
-    GameManager::GetGameManager().AddSceneToManager(mainScene);
+    GameManager::GetGameManager().Init();
+ 
     
 
     // Main game loop
@@ -57,18 +57,9 @@ int main(int argc, char* argv[])
     {
         const float frameTime = GetFrameTime();
         const int fps = GetFPS();
-       
-        //Update
-        mainScene->Update(frameTime);
-        // Draw
-        mainScene->Draw();
-        
-        
-   
-        GameManager::GetGameManager().HandleGarbageCollectionTick(frameTime);
-        //----------------------------------------------------------------------------------
+        GameManager::GetGameManager().Run(frameTime);
     }
-   // delete sceneRoot;
+    //delete sceneRoot;
     //delete gameObject1;
     //delete sceneRoot;
     

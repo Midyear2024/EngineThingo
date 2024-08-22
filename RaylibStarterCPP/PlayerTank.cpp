@@ -1,5 +1,4 @@
 #include "PlayerTank.h"
-#include "RectRenderer.h"
 #include "TankMovement.h"
 #include "TankRotation.h"
 #include "TurretRotation.h"
@@ -7,23 +6,26 @@
 #include "Transform.h"
 #include "Shell.h"
 #include "GameManager.h"
+#include "CircleCollider.h"
+#include <iostream>
 
 PlayerTank::PlayerTank(MyTransform* transform, GameObject* parent) : GameObject(transform, parent)
 {
 
+    //Set Up tank base
     new SpriteRenderer(*this, "Resources/Sprites/Tank.png", glm::vec3{ 0.5f,0.5f,1 }, glm::vec3{ 0.5f, 0.5f, 0 }, 180.0f);
     new TankMovement(*this, 100);
     new TankRotation(*this, 0, 100);
-
+    new CircleCollider(*this, 50);
+   
+    //Set up turret
     Turret = new GameObject(new MyTransform(glm::vec3{ 0, 0, 0 }, 0, glm::vec3{ 1,1,1 }), this);
     new SpriteRenderer(*Turret, "Resources/Sprites/GunTurret.png", glm::vec3{ 0.5f,0.5f,1 }, glm::vec3{ 0.5f, 0.8f, 0 }, 0);
     new TurretRotation(*Turret, 0, 100);
 
-    fireTransform = new GameObject(new MyTransform(glm::vec3{ 0, -50, 0 }, 0, glm::vec3{ 1,1,1 }), Turret);
+    //Set up where shells spawn from
+    fireTransform = new GameObject(new MyTransform(glm::vec3{ 0, -75, 0 }, 0, glm::vec3{ 1,1,1 }), Turret);
 
-    
-    /*this->AddGameObjectToScene(Tank, true);
-    this->AddGameObjectToScene(Turret, false);*/
 }
 
 void PlayerTank::Update(float dt)
@@ -52,3 +54,11 @@ bool PlayerTank::HandleFireRate(float dt)
     }
     return true;
 }
+
+void PlayerTank::OnDestroyed()
+{
+    fireTransform->Destroy();
+    Turret->Destroy();
+}
+
+

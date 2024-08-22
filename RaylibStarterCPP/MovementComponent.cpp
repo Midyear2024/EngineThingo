@@ -6,6 +6,7 @@ MovementComponent::MovementComponent(GameObject& gameObject, float movementSpeed
 {
     gameObject.AddComponent(this);
     this->AddGameObjectReference(gameObject);
+    componentType = MetaData::ComponentTypes::MovementComponent;
 }
 
 void MovementComponent::Move(const float dt)

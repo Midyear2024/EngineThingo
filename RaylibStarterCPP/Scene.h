@@ -18,6 +18,8 @@ public:
 	void AddGameObjectToScene(GameObject* objectToAdd, bool parentToSceneRoot = true);
 	void RemoveGameObjectFromScene(GameObject* objectToRemove);
 
+	std::vector<GameObject*> GetAllObjectsInScene() const;
+
 	virtual void Update(float dt);
 	virtual void Draw();
 

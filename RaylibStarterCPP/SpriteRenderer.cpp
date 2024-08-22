@@ -3,7 +3,7 @@
 
 SpriteRenderer::SpriteRenderer(GameObject& gameObject, std::string filePath, glm::vec3 spriteScale, glm::vec3 drawOrigin, float degreesOffset) : spriteScale{spriteScale}, origin{drawOrigin}, degreesOffset{degreesOffset}
 {
-	
+	componentType = MetaData::ComponentTypes::Renderer;
 	sprite = new Sprite{ filePath };
 	gameObject.AddComponent(this);
 	AddGameObjectReference(gameObject);

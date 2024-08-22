@@ -37,7 +37,11 @@ void Scene::RemoveGameObjectFromScene(GameObject* objectToRemove)
 {
 	auto it = std::find(allObjectsInScene.begin(), allObjectsInScene.end(), objectToRemove);
 	allObjectsInScene.erase(it);
-	objectToRemove->OnDestroy();
+}
+
+std::vector<GameObject*> Scene::GetAllObjectsInScene() const
+{
+	return allObjectsInScene;
 }
 
 void Scene::Update(float dt)

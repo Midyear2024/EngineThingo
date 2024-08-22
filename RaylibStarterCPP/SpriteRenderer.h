@@ -41,7 +41,9 @@ protected:
     Rectangle destinationRect;
 
 public:
-    SpriteRenderer() = default;
+    SpriteRenderer() {
+        componentType = MetaData::ComponentTypes::Renderer;
+    }
     SpriteRenderer(GameObject& gameObject,std::string filePath, glm::vec3 spriteScale, glm::vec3 drawOrigin, float degreesOffset);
     ~SpriteRenderer();
 public:

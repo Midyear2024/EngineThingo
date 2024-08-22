@@ -2,7 +2,9 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <raylib.h>
+#include "MetaData.h"
 
+class Collider;
 class MyTransform;
 class Component;
 class GameObject {
@@ -37,13 +39,19 @@ public:
 	void RemoveChild(GameObject* child);
 
 	void AddComponent(Component* toAdd);
+	Component* GetComponentOfType(MetaData::ComponentTypes type) const;
 
 	void AddParent(GameObject* parent);
 
-	bool HasChildren() { return children.size() > 0; }
+	bool HasChildren() const { return children.size() > 0; }
+	bool IsBeingDestroyed() const { return beingDestroyed; }
 
 	std::vector<GameObject*> GetChildren();
 
-	virtual void OnDestroy();
+	void Destroy();
+	virtual void OnDestroyed();
+
+	virtual void OnCollision(Collider& other);
+
 
 };

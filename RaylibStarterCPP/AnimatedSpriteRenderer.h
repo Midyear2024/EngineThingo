@@ -11,7 +11,9 @@ public:
         glm::vec3 drawOrigin,
         float degreesOffset,
         int totalFrames,
-        int totalLines);
+        int totalLines, 
+        bool looping,
+        bool destroyObjectOnFinish);
 protected:
     
     
@@ -23,9 +25,17 @@ protected:
 
     int frameCounter = 0;
 
+    bool looping;
+    bool destroyObjectOnFinish;
+
+    bool playing;
+
 public:
 
     void Update(float dt) override;
     void Draw() override;
+
+
+
 };
 

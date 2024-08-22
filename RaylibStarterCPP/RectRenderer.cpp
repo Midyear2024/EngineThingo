@@ -14,12 +14,15 @@ RectRenderer::RectRenderer(int width, int height,float rotation,  Color color) :
 {}
 
 RectRenderer::RectRenderer(glm::vec3 extents, float rotation, Color color) : extents{extents}, rotation {rotation}, color{color}
-{}
+{
+	componentType = MetaData::ComponentTypes::Renderer;
+}
 
 RectRenderer::RectRenderer(GameObject& gameObject, glm::vec3 extents, glm::vec3 origin, float rotation, Color color) : extents{ extents }, origin{ origin },  rotation { rotation }, color{ color }
 {
 	gameObject.AddComponent(this);
 	AddGameObjectReference(gameObject);
+	componentType = MetaData::ComponentTypes::Renderer;
 }
 
 

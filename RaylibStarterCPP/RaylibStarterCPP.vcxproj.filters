@@ -37,6 +37,9 @@
     <Filter Include="Header Files\SceneManagement">
       <UniqueIdentifier>{a1e0efdc-53d3-4666-899d-631ca3c8cf42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Components\Collisions">
+      <UniqueIdentifier>{35ec4abd-c0bb-4e83-8c7d-d6e55311f75c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -91,6 +94,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AnimatedSpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -166,6 +178,18 @@
     </ClInclude>
     <ClInclude Include="AnimatedSpriteRenderer.h">
       <Filter>Header Files\Components\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Components\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Header Files\Components\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="MetaData.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@ RotationComponent::RotationComponent(GameObject& gameObject, float startingRotat
 {
 	gameObject.AddComponent(this);
 	this->AddGameObjectReference(gameObject);
+	componentType = MetaData::MovementComponent;
 }
 
 void RotationComponent::Rotate(float dt)

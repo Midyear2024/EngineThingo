@@ -17,4 +17,7 @@ public:
 
 	void FireShell();
 	bool HandleFireRate(float dt);
+
+	void OnDestroyed() override;
+	
 };

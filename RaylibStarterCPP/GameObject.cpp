@@ -1,6 +1,8 @@
 #include "Transform.h"
 #include "GameObject.h"
 #include "Component.h"
+#include "Collider.h"
+#include "GameManager.h"
 
 
 
@@ -34,14 +36,22 @@ GameObject::~GameObject()
 	for (int i = 0; i < components.size(); ++i) {
 		delete components[i];
 	}
-	components.clear();
+
+
+	for (auto it = children.begin(); it != children.end(); ++it) {
+		(*it)->AddParent(parent);
+	}
+
+	if (parent) {
+		parent->RemoveChild(this);
+	}
 }
 
 void GameObject::Draw()
 {
-	const float length = 100;
-	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldForward()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldForward()[1] * length, GREEN);
-	DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldRight()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldRight()[1] * length, RED);
+	//const float length = 100;
+	//DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldForward()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldForward()[1] * length, GREEN);
+	//DrawLine(transform->GetWorldPosition()[0], transform->GetWorldPosition()[1], transform->GetWorldPosition()[0] + transform->GetWorldRight()[0] * length, transform->GetWorldPosition()[1] + transform->GetWorldRight()[1] * length, RED);
 
 	//Draw attached components
 	if (!components.empty()) {
@@ -55,8 +65,10 @@ void GameObject::Draw()
 void GameObject::Update(float dt)
 {
 	if (!components.empty()) {
-		for (auto it = components.begin(); it != components.end(); ++it) {
-			(*it)->Update(dt);
+		
+		
+		for (auto it = 0; it < components.size(); ++it) {
+			components[it]->Update(dt);
 		}
 	}
 }
@@ -83,12 +95,28 @@ void GameObject::AddComponent(Component* toAdd)
 	components.push_back(toAdd);
 }
 
+Component* GameObject::GetComponentOfType(MetaData::ComponentTypes type) const
+{
+	for (int i = 0; i < components.size(); ++i) {
+		if (components[i]->GetType() == type) {
+			return components[i];
+		}
+	}
+	return nullptr;
+}
+
 
 
 void GameObject::AddParent(GameObject* parent)
 {
-	this->parent = parent;
-	transform->AddParent(parent->transform);
+	if (parent == nullptr) {
+		this->parent = nullptr;
+		transform->AddParent(nullptr);
+	}
+	else {
+		this->parent = parent;
+		transform->AddParent(parent->transform);
+	}
 }
 
 std::vector<GameObject*> GameObject::GetChildren()
@@ -96,17 +124,17 @@ std::vector<GameObject*> GameObject::GetChildren()
 	return children;
 }
 
-void GameObject::OnDestroy()
+void GameObject::Destroy()
 {
-	delete transform;
-
-	for (int i = 0; i < components.size(); ++i) {
-		delete components[i];
-	}
-	components.clear();
-
-	if (parent) {
-		parent->RemoveChild(this);
-	}
+	OnDestroyed(); //Fire the callback
 	beingDestroyed = true;
+	GameManager::GetGameManager().RemoveGameObjectFromScene(this);
+}
+
+void GameObject::OnDestroyed()
+{
+}
+
+void GameObject::OnCollision(Collider& other)
+{
 }
